@@ -1,0 +1,17 @@
+# Xilinx Vivado / ISE
+*.jou
+*.log
+*.pb
+*.str
+*.dir/
+.Xil/
+vivado*.backup.jou
+vivado*.backup.log
+vivado_pid*.str
+hd_visual/
+xgui/
+.data/
+*.xpr.user
+
+#Ignore prep documentation 
+*.docx
