@@ -29,12 +29,23 @@ module datapath(
     wire [31:0] alu_result;
     wire [31:0] mem_read_data;
     
+    
+    // branching/jump wires from updated processor
+    wire [9:0] branch_target ; 
+    wire pc_src; // switches between pc_plus4 and branch_target, ultimately afffects the pc_next ouptut. 
+    wire [9:0] pc_after_branch; 
+    wire [9:0] jump_addr; 
+    wire [9:0] pc_next; 
+    
+    
+    
+    
     always @(posedge clk or posedge reset)  
     begin   
         if(reset)   
            pc <= 10'b0000000000;  
         else  
-           pc <= pc_plus4;  
+           pc <= pc_next;  
     end  
  
     assign pc_plus4 = pc + 10'b0000000100;
@@ -81,6 +92,32 @@ module datapath(
         .zero(zero),
         .alu_result(alu_result));
           
+    // branching logic 
+      assign branch_target = pc_plus4 + {imm_value [7:0], 2'b00}; 
+      
+      //and gate right under the two muxes
+      assign pc_src = branch & zero; 
+      
+      // mux2 on the left 
+      
+     mux2 #(.mux_width(10)) branch_mux
+    (   .a(pc_plus4),
+        .b(branch_target),
+        .sel(pc_src),
+        .y(pc_after_branch));
+      
+      //jump address is the lower 10 bit of the instruction
+      
+      assign jump_addr = {instr [7:0], 2'b00}; 
+      
+      //mux to the top-right of the processor 
+      
+       mux2 #(.mux_width(10)) jump_mux
+    (   .a(pc_after_branch),
+        .b(jump_addr),
+        .sel(jump),
+        .y(pc_next));
+      
     data_memory data_mem (
         .clk(clk),
         .mem_access_addr(alu_result),
