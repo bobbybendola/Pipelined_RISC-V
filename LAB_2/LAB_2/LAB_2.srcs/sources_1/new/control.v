@@ -1,7 +1,5 @@
 `timescale 1ns / 1ps
 
-
-
 module control(
     input reset,
     input[5:0] opcode,  
@@ -66,6 +64,21 @@ begin
             alu_src = 1'b1;  
             reg_write = 1'b0;  
       end  
+      
+       6'b110000: 
+      begin // shifts  
+            reg_dst = 1'b1;  
+            mem_to_reg = 1'b0;  
+            alu_op = 2'b10;    
+            mem_read = 1'b0;  
+            mem_write = 1'b0;  
+            alu_src = 1'b1;  
+            reg_write = 1'b1;  
+      end  
+      
+      
+     
+      
       
       endcase  
    end  
