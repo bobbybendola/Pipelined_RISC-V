@@ -16,7 +16,7 @@ module ALU(
       4'b0001: alu_result = a | b; // or  
       4'b0010: alu_result = a + b; // add  
       4'b0110: alu_result = a - b; // sub  
-      4'b0111: alu_result = ($signed(a) < $signed(b)) ? 1 : 0  ; //slt
+     4'b0111: alu_result = (a < b) ? 1 : 0; //slt unsigned 
       4'b1100: alu_result = ~(a | b ) ; //nor 
       4'b0100: alu_result = a^b; //xor 
       4'b0101: alu_result = a*b; //mult
