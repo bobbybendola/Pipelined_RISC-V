@@ -4,6 +4,7 @@
 *.pb
 *.str
 *.dir/
+*.zip
 .Xil/
 vivado*.backup.jou
 vivado*.backup.log
