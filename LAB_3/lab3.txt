@@ -1,4 +1,4 @@
-# Template for Lab 3. You should put your codes for programs 1.1 1.2 2.1 2.2 3.1 3.2 4.1 4.3 here. 
+git # Template for Lab 3. You should put your codes for programs 1.1 1.2 2.1 2.2 3.1 3.2 4.1 4.3 here. 
 
 # File Name: lab3.txt
 
@@ -31,7 +31,9 @@
 # Program 1
 program_1_1: # this is the label for the assembly program
 # -------- begin your MIPS assembly code --------
-
+add $t0, $s2, $s3    # t0 = g + h
+add $t1, $s4, $s0    # t1 = i + j
+sub $s1, $t0, $t1    # f = t0 - t1
 # -------- end ----------------------------------
 
 #
