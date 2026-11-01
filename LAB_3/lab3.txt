@@ -1,4 +1,4 @@
-git # Template for Lab 3. You should put your codes for programs 1.1 1.2 2.1 2.2 3.1 3.2 4.1 4.3 here. 
+# Template for Lab 3. You should put your codes for programs 1.1 1.2 2.1 2.2 3.1 3.2 4.1 4.3 here. 
 
 # File Name: lab3.txt
 
@@ -31,28 +31,55 @@ git # Template for Lab 3. You should put your codes for programs 1.1 1.2 2.1 2.2
 # Program 1
 program_1_1: # this is the label for the assembly program
 # -------- begin your MIPS assembly code --------
-add $t0, $s2, $s3    # t0 = g + h
-add $t1, $s4, $s0    # t1 = i + j
-sub $s1, $t0, $t1    # f = t0 - t1
+# starts at address 0
+addi $s2, $zero, 5   # g = 5
+addi $s3, $zero, 3   # h = 3
+addi $s4, $zero, 2   # i = 2
+addi $s0, $zero, 1   # j = 1
+add  $t0, $s2, $s3   # t0 = g + h
+add  $t1, $s4, $s0   # t1 = i + j
+sub  $s1, $t0, $t1   # f = t0 - t1
 # -------- end ----------------------------------
 
 #
 # Program 1.2
 # -------- begin your MIPS Machine code ---------
-
+00100000000100100000000000000101
+00100000000100110000000000000011
+00100000000101000000000000000010
+00100000000100000000000000000001
+00000010010100110100000000100000
+00000010100100000100100000100000
+00000001000010011000100000100010
 # -------- end ----------------------------------
 
 #
 # Program 2
 program_2_1:
 # -------- begin your MIPS assembly code --------
-
+# starts at address 0
+addi $s2, $zero, 5   # g = 5
+addi $s3, $zero, 3   # h = 3
+addi $s4, $zero, 2   # i = 2
+addi $s0, $zero, 1   # j = 1
+beq  $s4, $s0, ELSE  # if (i == j) go to ELSE
+add  $s1, $s2, $s3   # then (i != j): f = g + h
+j    EXIT            # skip the else block
+ELSE: sub $s1, $s2, $s3   # else (i == j): f = g - h
+# EXIT: the instruction after the sub (address 32)
 # -------- end ----------------------------------
 
 #
 # Program 2.2
 # -------- begin your MIPS Machine code ---------
-
+00100000000100100000000000000101
+00100000000100110000000000000011
+00100000000101000000000000000010
+00100000000100000000000000000001
+00010010100100000000000000000010
+00000010010100111000100000100000
+00001000000000000000000000001000
+00000010010100111000100000100010
 # -------- end ----------------------------------
 
 #
