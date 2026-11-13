@@ -75,7 +75,7 @@ ELSE: sub $s1, $s2, $s3   # else (i == j): f = g - h
 00100000000100100000000000000101
 00100000000100110000000000000011
 00100000000101000000000000000010
-00100000000100000000000000000001   #changed to j=2 for the second screenshot 
+00100000000100000000000000000001
 00010010100100000000000000000010
 00000010010100111000100000100000
 00001000000000000000000000001000
@@ -126,14 +126,28 @@ j    LOOP              # jump back to the start of the loop (index 8)
 #
 # Program 4
 # -------- begin your MIPS Machine code ---------
-
+11000000101000000100000010000000
+00000000100010000100000000100000
+10001101000010010000000000000000
+10001101000010100000000000000100
+10101101000010100000000000000000
+10101101000010010000000000000100
 # -------- end ----------------------------------
 
 #
 # Program 4.3
 void program_4_3(){
 # -------- begin your C code --------------------
+# arr = base address of the array (in $a0), i = index of the first element (in $a1)
+# The given assembly code appears to swap the two adjacent array elements arr[i] and arr[i+1] using two temporaries. 
+#Further explained using the waveform in the report as well.
+    # Temporary variables to hold adjacent elements
+    int temp1 = arr[i];     # Loaded into $t1 from offset 0($t0)
+    int temp2 = arr[i+1];   # Loaded into $t2 from offset 4($t0)
 
+    # Swap the elements in memory
+    arr[i] = temp2;         # Stored $t2 into offset 0($t0)
+    arr[i+1] = temp1;       # Stored $t1 into offset 4($t0)
 # -------- end ----------------------------------
     return;
 }
