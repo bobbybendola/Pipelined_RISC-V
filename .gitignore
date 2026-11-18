@@ -1,18 +1,33 @@
-# Xilinx Vivado / ISE
+# Vivado generated project directories
+*.cache/
+*.hw/
+*.ip_user_files/
+*.sim/
+*.runs/
+*.gen/
+*.srcs/**/*.cache
+.Xil/
+xgui/
+hd_visual/
+.data/
+
+# Vivado logs, journals, and simulation output
 *.jou
 *.log
 *.pb
 *.str
 *.dir/
-*.zip
-.Xil/
-vivado*.backup.jou
-vivado*.backup.log
-vivado_pid*.str
-hd_visual/
-xgui/
-.data/
+*.wdb
+*.backup.jou
+*.backup.log
 *.xpr.user
+vivado_pid*.str
 
-#Ignore prep documentation 
+# Archives and course handouts
+*.zip
 *.docx
+
+# OS files
+.DS_Store
+__MACOSX/
+Thumbs.db
